@@ -1,0 +1,119 @@
+[gd_scene load_steps=12 format=3 uid="uid://qiruav4jiodv"]
+
+[ext_resource type="Texture2D" uid="uid://dnbi5qlpmqt2d" path="res://Rocky Roads/Deco/Firefly Fondo para video juego 2d de una granja con obstáculos pixel, tiene motañas, pinos cielo est.jpg" id="1_caiq8"]
+[ext_resource type="Script" path="res://Scripts/menu.gd" id="1_kjfc4"]
+[ext_resource type="PackedScene" uid="uid://o4ar2paau3x2" path="res://scenes/coin.tscn" id="3_2tb4j"]
+[ext_resource type="PackedScene" uid="uid://cfvlnirgrar84" path="res://scenes/PollitoMenu.tscn" id="4_odybl"]
+[ext_resource type="AudioStream" uid="uid://btstmivulu2by" path="res://sounds/pirate_game_tune.ogg" id="5_ixhe4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oasg6"]
+bg_color = Color(0.6, 0.196078, 0.6, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hd5k7"]
+bg_color = Color(0.888778, 0.425894, 0.57232, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0jptu"]
+bg_color = Color(0.6, 0.196078, 0.6, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2pfqp"]
+bg_color = Color(0.890196, 0.427451, 0.572549, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gd06y"]
+bg_color = Color(0.6, 0.196078, 0.6, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lxd7h"]
+bg_color = Color(0.890196, 0.427451, 0.572549, 1)
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kjfc4")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.201527, 0.201527, 0.201527, 1)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_caiq8")
+expand_mode = 1
+flip_h = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -130.0
+offset_top = -118.0
+offset_right = 130.0
+offset_bottom = 91.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 24
+
+[node name="Play" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_oasg6")
+theme_override_styles/hover = SubResource("StyleBoxFlat_hd5k7")
+text = "JUGAR"
+
+[node name="Options" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_0jptu")
+theme_override_styles/hover = SubResource("StyleBoxFlat_2pfqp")
+text = "OPCIONES"
+
+[node name="Quit" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_gd06y")
+theme_override_styles/hover = SubResource("StyleBoxFlat_lxd7h")
+text = "SALIR"
+
+[node name="coin" parent="." instance=ExtResource("3_2tb4j")]
+position = Vector2(362, 163)
+scale = Vector2(4.12, 4.12)
+
+[node name="coin2" parent="." instance=ExtResource("3_2tb4j")]
+position = Vector2(82, 227)
+scale = Vector2(4.12, 4.12)
+
+[node name="coin3" parent="." instance=ExtResource("3_2tb4j")]
+position = Vector2(993, 69)
+scale = Vector2(4.12, 4.12)
+
+[node name="coin4" parent="." instance=ExtResource("3_2tb4j")]
+position = Vector2(794, 344)
+scale = Vector2(4.12, 4.12)
+
+[node name="polito menu" parent="." instance=ExtResource("4_odybl")]
+position = Vector2(286, 685)
+scale = Vector2(6.23387, 7.2)
+script = null
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_ixhe4")
+autoplay = true
+
+[connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="VBoxContainer/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]

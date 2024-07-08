@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://b1sch6c3wc4r6"]
+
+[ext_resource type="Script" path="res://scenes/splash.gd" id="1_cqatu"]
+
+[node name="Splash" type="Node2D"]
+script = ExtResource("1_cqatu")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[connection signal="ready" from="." to="." method="_on_ready"]
